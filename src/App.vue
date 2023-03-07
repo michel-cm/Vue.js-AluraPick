@@ -16,7 +16,7 @@
         class="lista-fotos-item"
       >
         <PainelView :titulo="foto.titulo">
-          <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo" />
+          <ImagemResponsiva :url="foto.url" :titulo="foto.titulo" />
         </PainelView>
       </li>
     </ul>
@@ -28,6 +28,8 @@ export default {
   name: "App",
   components: {
     PainelView: () => import("@/components/shared/painel/PainelView.vue"),
+    ImagemResponsiva: () =>
+      import("@/components/shared/imagem-responsiva/ImagemResponsiva.vue"),
   },
   data() {
     return {
@@ -72,10 +74,6 @@ export default {
 
 .centralizado {
   text-align: center;
-}
-
-.imagem-responsiva {
-  width: 100%;
 }
 
 .filtro {

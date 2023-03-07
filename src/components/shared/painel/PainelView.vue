@@ -1,9 +1,11 @@
 <template>
   <div class="painel">
-    <h2 class="painel-titulo">{{ titulo }}</h2>
-    <div class="painel-conteudo">
-      <slot />
-    </div>
+    <h2 class="painel-titulo" @dblclick="togleViewFoto">{{ titulo }}</h2>
+    <Transition name="painel-fade">
+      <div class="painel-conteudo" v-show="visivel">
+        <slot />
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -11,6 +13,16 @@
 export default {
   name: "PainelView",
   props: ["titulo"],
+  data() {
+    return {
+      visivel: true,
+    };
+  },
+  methods: {
+    togleViewFoto() {
+      this.visivel = !this.visivel;
+    },
+  },
 };
 </script>
 
@@ -34,5 +46,15 @@ export default {
   margin: 0 0 15px 0;
   padding: 10px;
   text-transform: uppercase;
+}
+
+.painel-fade-enter,
+.painel-fade-leave-active {
+  opacity: 0;
+}
+
+.painel-fade-enter-active,
+.painel-fade-leave-active {
+  transition: opacity 0.5s;
 }
 </style>
