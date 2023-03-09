@@ -1,12 +1,6 @@
 <template>
   <div id="app">
-    <nav>
-      <ul>
-        <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/cadastro">Cadastro</router-link></li>
-      </ul>
-    </nav>
-
+    <MenuView />
     <Transition name="pagina">
       <router-view></router-view>
     </Transition>
@@ -14,7 +8,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  components: {
+    MenuView: () => import("@/components/shared/menu/MenuView.vue"),
+  },
+};
 </script>
 
 <style>
