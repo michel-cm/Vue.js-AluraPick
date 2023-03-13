@@ -16,7 +16,13 @@
       >
         <PainelView :titulo="foto.titulo">
           <ImagemResponsiva :url="foto.url" :titulo="foto.titulo" />
-          <Botao tipo="button" rotulo="Remover" />
+          <Botao
+            tipo="button"
+            rotulo="Remover"
+            @botaoAtivado="remove(foto)"
+            :confirmacao="true"
+            estilo="perigo"
+          />
         </PainelView>
       </li>
     </ul>
@@ -38,6 +44,11 @@ export default {
       fotos: [],
       filtro: "",
     };
+  },
+  methods: {
+    remove(foto) {
+      alert("Remover foto " + foto.titulo);
+    },
   },
   created() {
     fetch(`http://localhost:3000/v1/fotos`)
