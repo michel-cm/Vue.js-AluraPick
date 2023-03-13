@@ -8,7 +8,6 @@
       placeholder="Procure uma foto"
       v-model="filtro"
     />
-    {{ filtro }}
     <ul v-if="fotos.length" class="lista-fotos">
       <li
         v-for="(foto, index) in fotosComFiltro"
@@ -17,6 +16,7 @@
       >
         <PainelView :titulo="foto.titulo">
           <ImagemResponsiva :url="foto.url" :titulo="foto.titulo" />
+          <Botao tipo="button" rotulo="Remover" />
         </PainelView>
       </li>
     </ul>
@@ -30,6 +30,7 @@ export default {
     PainelView: () => import("@/components/shared/painel/PainelView.vue"),
     ImagemResponsiva: () =>
       import("@/components/shared/imagem-responsiva/ImagemResponsiva.vue"),
+    Botao: () => import("@/components/shared/botao/BotaoView.vue"),
   },
   data() {
     return {
